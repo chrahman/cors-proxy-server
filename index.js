@@ -1,10 +1,9 @@
-require('dotenv').config({silent : true});
 var http = require('http');
 var request = require('request');
 
 var urlRegex = /^https?/;
-var sizeLimit = process.env.SIZE_LIMIT || 512 * 1024;
-var requestsLimit = process.env.REQ_LIMIT || 15;
+var sizeLimit = 512 * 1024 * 1024;
+var requestsLimit = 15;
 var copyHeaders = ['user-agent', 'content-type'];
 var reqIPs = [];
 
@@ -30,14 +29,14 @@ function wrongURI(res) {
   res.setHeader('Content-type', 'text/html');
   res.writeHead(404);
   res.end('<h1>Wrong request.</h1><p>For more info check out the spec:' +
-  ' <a href="https://github.com/messier31/cors-proxy-spec">https://github.com/messier31/cors-proxy-spec</a></p>');
+  ' <a href="https://github.com/chrahman/cors-proxy-server#readme"</a></p>');
 }
 
 function banner(res) {
   res.setHeader('Content-type', 'text/html');
   res.writeHead(200);
-  res.end('<h1>CORS PROXY SERVER</h1><p><a href="https://github.com/messier31/cors-proxy-server">' +
-    'https://github.com/messier31/cors-proxy-server</a></p>');
+  res.end('<h1>CORS PROXY SERVER</h1><p><a href="https://github.com/chrahman/cors-proxy-server">' +
+    'https://github.com/chrahman/cors-proxy-server</a></p>');
 }
 
 function limitExceed(res) {
@@ -122,4 +121,4 @@ http.createServer(function (req, res) {
      }
   });
 
-}).listen(process.env.PORT)
+}).listen(8081)
