@@ -1,6 +1,6 @@
 ## CORS PROXY SERVER
 
-```
+``` Javascript
 require('dotenv').config({silent : true});
 var http = require('http');
 var request = require('request');
