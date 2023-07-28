@@ -17,6 +17,8 @@ function createRequesHeaders(headers) {
     }
   });
 
+  res['x-requested-with'] = 'XMLHttpRequest';
+
   return res;
 }
 
